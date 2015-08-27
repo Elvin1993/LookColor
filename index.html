@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
-  <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-  <meta http-equiv="expires" content="-1">
-  <link rel="stylesheet" type="text/css" href="./css/m.css">
-  <title>看你有多色</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <!--   <meta charset="UTF-8">
+  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" type="text/css" href="./css/m.css">
+    <title>看你有多色</title>
 </head>
+
 <body>
-  <div class="grid">
-    <div id="loading" class="page hide">
-      <div class="loading-txt">加载中...</div>
+    <div class="grid">
+
+        <div id="loading" class="page hide">
+            <div class="loading-txt">加载中...</div>
+        </div>
+
+        <div id="index" class="page hide">
+            <h1>看你有多色</h1>
+            <div id="help">找出所有色块里颜色不同的一个</div>
+            <div class="btns">
+                <button class="btn ">普通模式</button>
+                <button class="btn btn-new">双飞模式</button>
+            </div>
+        </div>
+        <div id="room" class="page">
+          <header>
+            <span class="lv">得分: <em>1</em></span>
+            <span class="time">0</span>
+            <span class="btn btn-pause">暂停</span>
+          </header>
+          <div id="box" class="lv1" style="width: 500px; height: 500px;">
+            <span style="background-color: rgb(22, 103, 96);"></span>
+            <span style="background-color: rgb(22, 103, 96);"></span>
+            <span style="background-color: rgb(130, 152, 236);"></span>
+            <span style="background-color: rgb(22, 103, 96);"></span>
+          </div>
+        </div>
     </div>
-    <div class="page" id="index">
-      <h1>看你有多色</h1>
-      <div id="help">找出所有色块里颜色不同的一个</div>
-      <div class="btns">
-        <button class="btn ">普通模式</button>
-        <button class="btn btn-new">双飞模式</button>
-      </div>
-    </div>
-  </div>
 </body>
+
 </html>

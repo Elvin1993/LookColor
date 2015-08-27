@@ -1,94 +1,176 @@
-body,div,span {
-  margin: 0px;
-  padding: 0px;
+body,
+div,
+span {
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  
-  background-color: #F06060;
-  font:12px/1.5 '微软雅黑';
-  color: #fff;
+    background-color: #F06060;
+    font: 12px/1.5 '微软雅黑';
+    color: #fff;
 }
 
 #loading {
-  font-size:30px;
-  text-align: center;
-  color: #fff;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
 }
 
 .loading-txt {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 60px;
-  margin: auto;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    margin: auto;
 }
 
 .page {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .hide {
-  display: none;
+    display: none;
 }
 
 .show {
-  display: block;
+    display: block;
 }
 
 #index {
-  text-align: center;
+    text-align: center;
 }
 
 #index h1 {
-  font-size: 30px;
-  padding: 30px 0;
-  text-shadow: 1px 1px 1px #AB3C3C;
+    font-size: 30px;
+    padding: 30px 0;
+    text-shadow: 1px 1px 1px #AB3C3C;
 }
 
 #help {
-  height: 30px;
-  font-size: 16px;
-  color: #FFA1A1;
+    height: 30px;
+    font-size: 16px;
+    color: #FFA1A1;
 }
 
 #index .btns {
-  position: absolute;
-  bottom: 10px;
-  height: 200px;
-  width: 100%;
-  color: #ddd;
+    position: absolute;
+    bottom: 10px;
+    height: 200px;
+    width: 100%;
+    color: #ddd;
 }
 
 .btn {
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: inline-block;
-  margin: 10px 20px;
-  /*text-transform: uppercase; 文字大写 , 对中文无意义*/
-  letter-spacing: 1px;
-  font-weight: 700px;
-  position: relative;
-  background: #FCAD26;
-  border-radius: 7px;
-  box-shadow: 0 5px #DA9622;
-  font-size: 20px;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 20px;
+    /*text-transform: uppercase; 文字大写 , 对中文无意义*/
+    letter-spacing: 1px;
+    font-weight: 700px;
+    position: relative;
+    background: #FCAD26;
+    border-radius: 7px;
+    box-shadow: 0 5px #DA9622;
+    font-size: 20px;
     font-family: '微软雅黑';
     height: 50px;
     width: 220px;
     line-height: 50px;
-      -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn.btn-new {
-  background: #5cbcf6;
-  box-shadow: 0 5px #49A7DF;
+    background: #5cbcf6;
+    box-shadow: 0 5px #49A7DF;
+}
+
+#room header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #FFA1A1;
+}
+
+.lv {
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+#room .lv em {
+  font-style: normal;
+}
+
+.time {
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #FD9090;
+    color: #FFCACA;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.btn-pause {
+    margin: 0;
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #fff;
+}
+
+#box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background-color: #ddd;
+  border-radius: 10px;
+  padding: 10px;
+}
+#box span {
+  display: block;
+  float: left;
+  cursor: pointer;
+  border: 5px solid #ddd;
+  border-radius: 10px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+}
+
+.lv1 span {
+  width: 50%;
+  height: 50%;
+}
+
+.lv2 span {
+  width: 33.33%;
+  height: 33.33%;
 }
