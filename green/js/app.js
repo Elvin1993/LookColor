@@ -5,10 +5,10 @@
             loading: $("#loading"),
             dialog: $("#dialog"),
             play: $(".btn-play"),
-        }, 
-        ua = window.navigator.userAgent.toLowerCase(), 
-        isAndroid = /android/i.test(ua), 
-        isIOS = /iphone|ipad|ipod/i.test(ua), 
+        },
+        ua = window.navigator.userAgent.toLowerCase(),
+        isAndroid = /android/i.test(ua),
+        isIOS = /iphone|ipad|ipod/i.test(ua),
         app = {
             init: function() {
                 this.initEvent();
@@ -26,14 +26,14 @@
                 else
                     app.render();
 
-            }, 
+            },
             render: function() {
                 setTimeout(function() {
                     b.loading.hide(), b.index.show()
                 }, 1000)
-            },           
+            },
             initEvent: function() {
-                var clickEvent = "ontouchstart" in document.documentElement ? "touchstart" : "click", 
+                var clickEvent = "ontouchstart" in document.documentElement ? "touchstart" : "click",
                 myApp = this;
                 b.play.on(clickEvent, function() {
                     var type = $(this).data("type") || "color";
@@ -42,14 +42,14 @@
                 this.weixinEvent();
             },weixinEvent: function(){
                 var h = _lang[_config.lang];
-                document.addEventListener("WeixinJSBridgeReady", 
+                document.addEventListener("WeixinJSBridgeReady",
                     function() {
                         if (WeixinJSBridge) {
                             WeixinJSBridge.on("menu:share:appmessage", function() {
-                                var a = "color2" == Game.type ? h.share_txt_d : "", 
+                                var a = "color2" == Game.type ? h.share_txt_d : "",
                                     b = Game.lastScore > 0 ? a + h.share_txt1 + Game.lastScore + h.share_txt2 + Game.lastGamePercent + h.share_txt3 + Game.lastGameTxt + h.share_txt4 : shareData.tTitle;
                                 WeixinJSBridge.invoke(
-                                    "sendAppMessage", 
+                                    "sendAppMessage",
                                     {
                                         img_url: shareData.imgUrl,
                                         link: shareData.timeLineLink,
@@ -58,10 +58,10 @@
                                     }, function() {});
                             });
                             WeixinJSBridge.on("menu:share:timeline", function() {
-                                var a = "color2" == Game.type ? h.share_txt_d : "", 
+                                var a = "color2" == Game.type ? h.share_txt_d : "",
                                     b = Game.lastScore > 0 ? a + h.share_txt1 + Game.lastScore + h.share_txt2 + Game.lastGamePercent + h.share_txt3 + Game.lastGameTxt + h.share_txt4 : shareData.tTitle;
                                 WeixinJSBridge.invoke(
-                                    "shareTimeline", 
+                                    "shareTimeline",
                                     {
                                         img_url: shareData.imgUrl,
                                         link: shareData.timeLineLink,
@@ -70,8 +70,8 @@
                                     }, function() {});
                             });
                         }
-                    }, 
-                    false);                
+                    },
+                    false);
             }};
     app.init();
     window.API = {}
