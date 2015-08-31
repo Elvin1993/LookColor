@@ -37,6 +37,7 @@
                 myApp = this;
                 b.play.on(clickEvent, function() {
                     var type = $(this).data("type") || "color";
+                    console.log(type, b.room, myApp);
                     b.index.hide(), Game.init(type, b.room, myApp)
                 });
                 this.weixinEvent();

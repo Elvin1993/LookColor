@@ -172,6 +172,11 @@ body {
 }
 
 .lv2 span {
+  width: 50%;
+  height: 50%;
+}
+
+.lv3 span {
   width: 33.33%;
   height: 33.33%;
 }

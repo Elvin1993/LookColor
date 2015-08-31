@@ -3,22 +3,22 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <!--   <meta charset="UTF-8">
-  -->
+      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="expires" content="-1">
     <link rel="stylesheet" type="text/css" href="./css/m.css">
-    <script type="text/javascript" src="./lib/libs.min.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./lib/libs.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./lib/underscore.js"></script>
+    
     <title>看你有多色</title>
 </head>
 
 <body>
     <div class="grid">
         <!-- 加载页面 -->
-        <div id="loading" class="page hide">
+        <div id="loading" class="page">
             <div class="loading-txt">加载中...</div>
         </div>
         <!-- 首页 -->
@@ -26,7 +26,7 @@
             <h1>看你有多色</h1>
             <div id="help">找出所有色块里颜色不同的一个</div>
             <div class="btns">
-                <button class="btn ">普通模式</button>
+                <button class="btn btn-play">普通模式</button>
                 <button class="btn btn-new">双飞模式</button>
             </div>
         </div>
@@ -39,15 +39,15 @@
                 <span class="time">0</span>
                 <span class="btn btn-pause">暂停</span>
             </header>
-            <div id="box" class="lv1" style="width: 500px; height: 500px;">
-                <span style="background-color: rgb(22, 103, 96);"></span>
-                <span style="background-color: rgb(22, 103, 96);"></span>
-                <span style="background-color: rgb(130, 152, 236);"></span>
-                <span style="background-color: rgb(22, 103, 96);"></span>
+            <div id="box" class="" style="width: 500px; height: 500px;">
+               <!--  <span style="background-color: rgb(22, 103, 96);"></span>
+               <span style="background-color: rgb(22, 103, 96);"></span>
+               <span style="background-color: rgb(130, 152, 236);"></span>
+               <span style="background-color: rgb(22, 103, 96);"></span> -->
             </div>
         </div>
         <!-- 游戏结束页面 -->
-        <div id="dialog" class="page">
+        <div id="dialog" class="page hide">
           <div class="pause hide">
             <h3>游戏暂停</h3>
             <div class="btn-wrap">
@@ -56,7 +56,7 @@
             </div>
             <a href="#" class="btn" >更多游戏</a>
           </div>
-          <div class="gameover">
+          <div class="gameover hide">
             <h3>瞎子lv4</h3>
             <div class="btn-wrap">
               <button class="btn btn-resume">双飞场</button>
@@ -67,5 +67,7 @@
         </div>
     </div>
 </body>
-
+<script type="text/javascript" charset="UTF-8" src="./js/game.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./js/app.js"></script>
+<script type="text/javascript" charset="UTF-8" src="./js/color1.js"></script>
 </html>
