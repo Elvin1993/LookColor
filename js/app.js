@@ -3,7 +3,6 @@
             index: $("#index"),
             room: $('#room'),
             loading: $('#loading'),
-            dialog: $('#dialog'),
             play: $('.btn-play')
         },
         ua = window.navigator.userAgent.toLowerCase(),
@@ -11,26 +10,26 @@
         isIOS = /iphone|ipad|ipod/i.test(ua),
         app = {
             init: function() {
-                console.log('init');
+                //初始化 游戏开始事件
                 this.initEvent();
                 this.loading();
             },
             loading: function() {
-                console.info('loading');
                 app.render();
             },
+            //隐藏加载界面 ， 显示游戏首页
             render: function() {
-                console.info('render');
                 setTimeout(function() {
                     b.loading.hide(), b.index.show();
-                }, 1000);
+                }, 200);
             },
             initEvent: function() {
                 //判断是否是移动设备
                 var clickEvent = "ontouchstart" in document.documentElement ? "touchstart" : 'click',
                     myApp = this;
+                //点击开始按钮之后初始化游戏
                 b.play.on(clickEvent, function() {
-                    var type = $(this).data("type") || "color";
+                    var type = $(this).data("type") || "color1";
                     b.index.hide();
                     Game.init(type, b.room, myApp);
                 });

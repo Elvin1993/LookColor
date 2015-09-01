@@ -180,7 +180,36 @@ body {
   width: 33.33%;
   height: 33.33%;
 }
+.lv4 span {
+  width: 25%;
+  height: 25%;
+}
+.lv5 span {
+  width: 20%;
+  height: 20%;
+}
+.lv6 span {
+  width: 16.66%;
+  height: 16.66%;
+}
 
+.lv7 span {
+  width: 14.28%;
+  height: 14.28%;
+}
+.lv8 span {
+  width: 12.5%;
+  height: 12.5%;
+}
+
+.lv9 span {
+  width: 11.11%;
+  height: 11.11%;
+}
+.lv10 span {
+  width: 10%;
+  height: 10%;
+}
 #dialog {
   background: #A74343;
 }
@@ -230,4 +259,8 @@ margin: auto;
   width:220px;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.danger {
+  color: red;
 }

@@ -52,10 +52,15 @@ var _lang = {
     },
     _config = {
         lang: "zh",
-        color: {
+        color1: {
             allTime: 60,
             addTime: 0,
             lvMap: [2, 3, 4, 5, 5, 6, 7, 7, 7, 7, 8, 8, 8, 9]
+        },
+        color2: {
+            allTime: 30,
+            addTime: 0,
+            lvMap: [7, 7, 7, 8, 8, 8, 9, 10, 10]
         }
     };
 ! function() {
@@ -63,7 +68,7 @@ var _lang = {
         b = {
             lv: $("#room .lv em"),
             time: $("#room .time"),
-            start: $("#room .btn-restart"),
+            start: $("#dialog .btn-restart"),
             pause: $("#room .btn-pause"),
             resume: $("#dialog .btn-resume"),
             dialog: $("#dialog"),
@@ -75,52 +80,65 @@ var _lang = {
             target: 1,
             finded: 0,
             score: 0,
+            //初始化游戏
             init: function(type, el, parent) {
-                console.log(type, el, parent);
+                //获取游戏类型 普通/双飞
                 this.type = type;
                 this.target = "color2" == type ? 2 : 1;
                 this.config = _config[type];
-                this.api = API[type];
+                //切换颜色的API
+                this.api = API.color;
                 this.el = el;
-                this.initEvent();
+                //初始化事件
                 this.renderUI();
-                this.reset(); 
+                this.initEvent();
+                //启动游戏
+                this.reset();
                 this.start();
             },
+            //根据手机横屏和竖屏设置游戏界面的宽高
             renderUI: function() {
-                console.log("renderUI");
                 var isLandscape = 90 == window.orientation || -90 == window.orientation;
                 var width = isLandscape ? window.innerHeight : window.innerWidth;
                 width -= 20, width = Math.min(width, 500);
                 box.width(width).height(width);
                 this.el.show();
             },
+            //初始化事件
             initEvent: function() {
                 var eventName = "ontouchStart" in document.documentElement ? "touchend" : 'click',
                     myGame = this;
                 $(window).resize(function() {
                     myGame.renderUI();
                 });
-                // box.on(eventName, "span", function {
-                //     var type = $(this).data("type");
-                //     if ("a" == type) {
-                //         $(this).css("background-color", "#f00").data("type", "").html("<em></em>");
-                //         myGame.finded++;
-                //         if (myGame.finded == myGame.target) {
-                //             myGame.nextLv.call(myGame);
-                //         }
-                //     }
-                // });
+                box.on(eventName, "span", function() {
+                    var type = $(this).data("type");
+                    if ("a" == type) {
+                        $(this).css("background-color", "#f00").data("type", "").html("<em></em>");
+                        myGame.finded++;
+                        if (myGame.finded == myGame.target) {
+                            myGame.nextLv.call(myGame);
+                        }
+                    }
+                });
+                //绑定暂停事件
                 b.pause.on(eventName, _.bind(this.pause, this));
+                //绑定继续事件
                 b.resume.on(eventName, _.bind(this.resume, this));
+                //绑定重来事件
                 b.start.on(eventName, function() {
-                    console.log('start');
                     myGame.score = 0;
                     b.time.html(0);
                     myGame.reset();
                     myGame.start();
                 });
             },
+            //重置游戏参数
+            reset: function() {
+                this.time = this.config.allTime;
+                this.lv = -1
+            },            
+            //游戏开始
             start: function() {
                 this.time > 5 && b.time.removeClass("danger");
                 this.finded = 0;
@@ -132,52 +150,52 @@ var _lang = {
                 this.renderInfo();
                 this.timer || (this.timer = setInterval(_.bind(this.tick, this), 1000));
             },
+            //游戏继续
             resume: function() {
                 b.dialog.hide();
                 this._pause = false;
             },
+            //暂停
             pause: function() {
                 this._pause = true;
                 b.d_content.hide();
                 b.d_pause.show();
                 b.dialog.show();
             },
+            //设置关卡参数
             renderMap: function() {
-                console.log(this.lvMap);
                 if (!this._pause) {
                     var n = this.lvMap * this.lvMap,
                         c = "",
                         d = "lv" + this.lvMap;
-                    console.log(n);
                     _(n).times(function() {
                         c += "<span></span>"
                     });
                     box.attr("class", d).html(c);
-                    this.api.render(this.lvMap, this.lv);
+                    //生成一个过关span
+                    this.api.render(this.type, this.lvMap, this.lv);
                 }
             },
+            //设置关卡信息
             renderInfo: function() {
-                this.score += "color2" == this.type ? this.lvMap / 2 : 1;
+                this.score += ("color2" == this.type) ? this.lvMap / 2 : 1;
                 b.lv.text(this.score)
             },
-            reset: function() {
-                console.log('reset');
-                this.time = this.config.allTime;
-                this.lv = -1
-            },
+            //游戏计时
             tick: function() {
                 if (this._pause) {
                     return
                 } else {
                     this.time--;
                     this.time < 6 && b.time.addClass("danger");
-                    if (this.time < 0) {
+                    if (this.time <= 0) {
                         this.gameOver()
                     } else {
                         b.time.text(parseInt(this.time));
                     }
                 }
             },
+            //游戏结束
             gameOver: function() {
                 var d = this.api.getGameOverText(this.score);
                 this.lastScore = this.score;
@@ -199,6 +217,13 @@ var _lang = {
                 this._pause = true;
                 var g = "color2" == this.type ? "d_" : "";
             },
+            //下一关
+            nextLv: function() {
+                this.time += this.config.addTime;
+                b.time.text(parseInt(this.time));
+                if (!this._pause)
+                    this.start();
+            }
         };
 
     window.Game = c;
